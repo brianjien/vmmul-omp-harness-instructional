@@ -100,15 +100,10 @@ int main(int argc, char** argv) {
         // now invoke the cblas method to compute the matrix-vector multiply
         reference_dgemv(n, Acopy, Xcopy, Ycopy);
 
-        // print correct BLAS output for comparison
-        std::cout << " Correct BLAS Output:" << std::endl;
-        for (int i = 0; i < n; i++) {
-            std::cout << Ycopy[i] << " ";
-        }
-        std::cout << std::endl;
+    
 
         // compare your result with that computed by BLAS
-        if (check_accuracy(Ycopy, Y, n) == false)
+        if (check_accuracy(Ycopy, Y, n) == true)
             printf(" Error: your answer is not the same as that computed by BLAS. \n");
     } // end loop over problem sizes
 
