@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = 
 
-CXX_FLAGS = -O0 -march=native
+CXX_FLAGS = -O0 -Wall -pedantic -O3 -DNDEBUG -march=znver1 -mtune=znver1 -mfma -mavx2 -m3dnow -mprefer-vector-width=256 -fomit-frame-pointer -ftree-vectorize -funroll-loops -ffast-math -fopt-info-vec-all=report.txt
 

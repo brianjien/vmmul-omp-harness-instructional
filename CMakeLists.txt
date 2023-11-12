@@ -48,7 +48,7 @@ target_compile_options(benchmark-basic PRIVATE -Wall -pedantic -march=native -O1
 add_executable(benchmark-vectorized dgemv-vectorized.cpp)
 target_link_libraries(benchmark-vectorized PRIVATE benchmark ${BLAS_LIBRARIES})
 target_compile_features(benchmark-vectorized PRIVATE c_std_11 c_restrict)
-target_compile_options(benchmark-vectorized PRIVATE -march=native)
+target_compile_options(benchmark-vectorized PRIVATE -Wall -pedantic ${VFLAGS} ) 
 
 add_executable(benchmark-blas dgemv-blas.cpp)
 target_link_libraries(benchmark-blas PRIVATE benchmark ${BLAS_LIBRARIES})
