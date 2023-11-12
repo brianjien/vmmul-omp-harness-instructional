@@ -13,13 +13,12 @@ const char* dgemv_desc = "OpenMP dgemv.";
  */
 
 void my_dgemv(int n, double* A, double* x, double* y) {
-
     #pragma omp parallel
     {
         int nthreads = omp_get_num_threads();
         int thread_id = omp_get_thread_num();
         printf("my_dgemv(): Hello world: thread %d of %d checking in. \n", thread_id, nthreads);
-        printf("my_dgemv(): For actual timing runs, please comment out these printf() and omp_get_*() statements. \n");
+       // printf("my_dgemv(): For actual timing runs, please comment out these printf() and omp_get_*() statements. \n");
     }
 
     #pragma omp parallel for
@@ -29,7 +28,9 @@ void my_dgemv(int n, double* A, double* x, double* y) {
         for (int j = 0; j < n; j++) {
             temp += A[i * n + j] * x[j];
         }
-        #pragma omp atomic
-        y[i] += temp;
+        #pragma omp critical
+        {
+            y[i] += temp;
+        }
     }
 }
