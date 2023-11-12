@@ -10,16 +10,12 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O0")
 
 find_package(BLAS REQUIRED)
 
+
 if ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
    message(STATUS "setting vector flags for gcc compiler = " ${CMAKE_C_COMPILER_ID})
-# produces best results on perlmutter and AMD 7763 processor
-   set(VFLAGS -O3 -DNDEBUG -Wall -march=znver1 -mtune=znver1 -mfma -mavx2 -m3dnow -mprefer-vector-width=256 -fomit-frame-pointer -ftree-vectorize -funroll-loops -ffast-math -fopt-info-vec-all=report.txt)
-# alternate for AMD 7763: produces significant speedup over basic   set(VFLAGS -O2 -DNDEBUG -Wall -march=znver1 -mtune=znver1 -mavx2 -ftree-vectorize  -ffast-math -fopt-info-vec-all=report.txt)
-# conservative, portable   set(VFLAGS  -O3  -fopt-info-vec-all=report.txt)
-#   set(VFLAGS  -O3 -mprefer-vector-width=512 -mavx512f -mavx512cd -fopt-info-vec-all=report.txt)
-#   set(VFLAGS  -O2 -march=knl -mprefer-vector-width=512 -mavx512f -mavx512cd -fopt-info-vec-all=report.txt)
-#   message(STATUS "vectorization flags for gcc compiler are" ${VFLAGS})
-endif ()
+   set(VFLAGS -O3 -march=native -DNDEBUG -Wall -fomit-frame-pointer -ftree-vectorize -funroll-loops -ffast-math -fopt-info-vec-all=report.txt)
+   # Add other necessary flags as needed
+endif()
 
 if ("${CMAKE_C_COMPILER_ID}" STREQUAL "Intel")
    message(STATUS "setting vector flags for icc compiler = " ${CMAKE_C_COMPILER_ID})
