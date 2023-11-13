@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
         std::chrono::duration<double> elapsed = end_time - start_time;
 
         // calculate MFLOP/s
-        double mflops = (2.0 * n * n) / (elapsed.count() * 1e6);
+        double mflops = (n/1000000) / (elapsed.count());
         std::cout << " Elapsed time is : " << elapsed.count() << " seconds" << std::endl;
         std::cout << " MFLOP/s: " << mflops << std::endl;
 
