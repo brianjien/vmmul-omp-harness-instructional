@@ -89,14 +89,17 @@ int main(int argc, char** argv) {
         std::chrono::duration<double> elapsed = end_time - start_time;
 
         // calculate MFLOP/s
-        double mflops = (n/1000000) / (elapsed.count() * 1e6);
+        double mflops = ((n/1000000) / elapsed.count()) ;
+        double bytes = n * sizeof(uint64_t);
+
+         double capacity = 204.8; // Theoretical peak memory bandwidth in GB/s
+         // Calculate memory bandwidth utilization (in GB/s)
+       double memory_bandwidth_utilized = (bytes / (elapsed.count() * 1e9)) / capacity * 100.0;
         std::cout << " Elapsed time is : " << elapsed.count() << " seconds" << std::endl;
         std::cout << " MFLOP/s: " << mflops << std::endl;
+        std::cout << "Memory bandwidth utilization: " << memory_bandwidth_utilized << "%" << std::endl;
 
-        size_t bytes_accessed = n * n * sizeof(double) * 2 + n * sizeof(double) * 4;
-        double bandwidth_utilization = (bytes_accessed / elapsed.count()) / (max_size * max_size * sizeof(double));
-        std::cout << " Memory Bandwidth Utilization: " << bandwidth_utilization * 100 << "%" << std::endl;
-
+        
         // now invoke the cblas method to compute the matrix-vector multiply
         reference_dgemv(n, Acopy, Xcopy, Ycopy);
 
