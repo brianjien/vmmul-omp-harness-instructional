@@ -106,7 +106,7 @@ int main(int argc, char** argv) {
     
 
         // compare your result with that computed by BLAS
-        if (check_accuracy(Ycopy, Y, n) == false)
+        if (check_accuracy(Ycopy, Y, n) == true)
             printf(" Error: your answer is not the same as that computed by BLAS. \n");
     } 
 
