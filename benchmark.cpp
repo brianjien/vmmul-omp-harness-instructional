@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
         std::chrono::duration<double> elapsed = end_time - start_time;
 
         // calculate MFLOP/s
-        double mflops = ((n/1000000) / elapsed.count()) ;
+        double mflops = (2.0 * n * n) / (elapsed.count() * 1e6);
         double bytes = n * sizeof(uint64_t);
 
          double capacity = 204.8; // Theoretical peak memory bandwidth in GB/s
