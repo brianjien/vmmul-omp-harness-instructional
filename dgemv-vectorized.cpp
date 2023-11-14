@@ -16,8 +16,8 @@ void my_dgemv(int n, double* A, double* x, double* y) {
         #pragma omp simd reduction(+:y_vector)
         for (int j = 0; j < n; j += 4) {
             // Load data with aligned load
-            __m256d a_vector = _mm256_load_pd(&A[i * n + j]);
-            __m256d x_vector = _mm256_load_pd(&x[j]);
+            __m256d a_vector = _mm256_loadu_pd(&A[i * n + j]);
+            __m256d x_vector = _mm256_loadu_pd(&x[j]);
             // Perform fused multiply-add
             y_vector = _mm256_fmadd_pd(a_vector, x_vector, y_vector);
         }
