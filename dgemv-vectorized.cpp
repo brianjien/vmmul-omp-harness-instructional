@@ -10,9 +10,11 @@ const char* dgemv_desc = "Vectorized implementation of matrix-vector multiply.";
  */
 void my_dgemv(int n, double* A, double* x, double* y) {
    // Assuming A, x, and y are aligned and n is a multiple of 4
+   #pragma omp parallel for
    for(int i = 0; i < n; i++) {
       __m256d y_vector = _mm256_setzero_pd();
 
+      #pragma omp simd reduction(+:y_vector)
       for (int j = 0; j < n; j += 4) {
          // Load data with aligned load
          __m256d a_vector = _mm256_loadu_pd(&A[i * n + j]);
