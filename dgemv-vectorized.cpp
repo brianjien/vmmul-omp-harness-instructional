@@ -10,7 +10,6 @@ const char* dgemv_desc = "Vectorized implementation of matrix-vector multiply.";
  */
 void my_dgemv(int n, double* A, double* x, double* y) {
     // Vectorization using AVX (256-bit SIMD)
-    #pragma omp parallel for
     for (int i = 0; i < n; i++) {
         __m256d y_vector = _mm256_setzero_pd();
 
