@@ -8,7 +8,6 @@ const char* dgemv_desc = "Vectorized implementation of matrix-vector multiply.";
  * On exit, A and X maintain their input values.
  */
 void my_dgemv(int n, double* A, double* x, double* y) {
-    #pragma omp parallel for
        for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             y[i] += A[i * n + j] * x[j];
