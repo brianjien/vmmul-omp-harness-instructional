@@ -8,7 +8,7 @@ const char* dgemv_desc = "Vectorized implementation of matrix-vector multiply.";
  * where A is n-by-n matrix stored in row-major format, and X and Y are n by 1 vectors.
  * On exit, A and X maintain their input values.
  */
-void my_dgemv(int n, double* A, double* x, double* y) {
+void dgemv_vectorized(int n, double* A, double* x, double* y) {
     // Vectorization using AVX (256-bit SIMD)
     for (int i = 0; i < n; i++) {
         __m256d y_vector = _mm256_setzero_pd();
