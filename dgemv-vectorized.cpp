@@ -13,11 +13,13 @@ void my_dgemv(int n, double* A, double* x, double* y) {
     for (int i = 0; i < n; i++) {
         __m256d y_vector = _mm256_setzero_pd();
         for (int j = 0; j < n; j += 4) {
+            // Load data with aligned load
             __m256d a_vector = _mm256_loadu_pd(&A[i * n + j]);
             __m256d x_vector = _mm256_loadu_pd(&x[j]);
-            y_vector = _mm256_add_pd(y_vector, _mm256_mul_pd(a_vector, x_vector));
+            // Perform fused multiply-add
+            y_vector = _mm256_fmadd_pd(a_vector, x_vector, y_vector);
         }
-        // Sum the elements of the vector
+        // Horizontal sum
         y[i] += y_vector[0] + y_vector[1] + y_vector[2] + y_vector[3];
     }
 }
