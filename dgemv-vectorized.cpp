@@ -14,8 +14,8 @@ void my_dgemv(int n, double* A, double* x, double* y) {
         __m256d y_vector = _mm256_setzero_pd();
         for (int j = 0; j < n; j += 4) {
             // Load data with aligned load
-            __m256d a_vector = _mm256_loadu_pd(&A[i * n + j]);
-            __m256d x_vector = _mm256_loadu_pd(&x[j]);
+            __m256d a_vector = _mm256_load_pd(&A[i * n + j]);
+            __m256d x_vector = _mm256_load_pd(&x[j]);
             // Perform fused multiply-add
             y_vector = _mm256_fmadd_pd(a_vector, x_vector, y_vector);
         }
