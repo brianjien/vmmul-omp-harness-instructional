@@ -14,7 +14,7 @@ void my_dgemv(int n, double* A, double* x, double* y) {
     for (int i = 0; i < n; i++) {
         __m256d y_vector = _mm256_setzero_pd();
 
-        #pragma omp simd reduction(+:y_vector)
+        // Unroll the loop to allow better vectorization
         for (int j = 0; j < n; j += 4) {
             // Load data with aligned load
             __m256d a_vector = _mm256_loadu_pd(&A[i * n + j]);
