@@ -1,12 +1,7 @@
-/home/parallels/Desktop/CSC656/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:12:1: note: ***** Analysis failed with vector mode VOID
-/home/parallels/Desktop/CSC656/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:13:23: missed: couldn't vectorize loop
-/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16072:36: missed: statement clobbers memory: _22 = __builtin_aarch64_ld1v2df (_5);
-/home/parallels/Desktop/CSC656/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:15:27: missed: couldn't vectorize loop
-/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16072:36: missed: statement clobbers memory: _22 = __builtin_aarch64_ld1v2df (_5);
-/home/parallels/Desktop/CSC656/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:11:6: note: vectorized 0 loops in function.
-/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16072:36: missed: statement clobbers memory: _22 = __builtin_aarch64_ld1v2df (_5);
-/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16072:36: missed: statement clobbers memory: _28 = __builtin_aarch64_ld1v2df (_8);
-/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:3278:10: missed: statement clobbers memory: __builtin_aarch64_im_lane_boundsi (16, 8, 0);
-/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:3278:10: missed: statement clobbers memory: __builtin_aarch64_im_lane_boundsi (16, 8, 1);
-/home/parallels/Desktop/CSC656/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:23:1: note: ***** Analysis failed with vector mode V2DF
-/home/parallels/Desktop/CSC656/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:23:1: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DF
+/global/homes/b/brianj/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:10:23: missed: couldn't vectorize loop
+/global/homes/b/brianj/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:13:31: missed: not vectorized: complicated access pattern.
+/global/homes/b/brianj/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:12:27: optimized: loop vectorized using 32 byte vectors
+/global/homes/b/brianj/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:12:27: optimized: loop vectorized using 16 byte vectors
+/global/homes/b/brianj/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:9:6: note: vectorized 1 loops in function.
+/global/homes/b/brianj/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:17:1: note: ***** Analysis failed with vector mode V4DF
+/global/homes/b/brianj/vmmul-omp-harness-instructional/dgemv-vectorized.cpp:17:1: note: ***** Skipping vector mode V32QI, which would repeat the analysis for V4DF
